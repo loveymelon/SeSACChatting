@@ -92,6 +92,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="y3S-nM-vfi">
+                                <rect key="frame" x="0.0" y="59" width="393" height="679"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uX-wd-bvc">
                                 <rect key="frame" x="0.0" y="738" width="393" height="80"/>
                                 <subviews>
@@ -107,17 +111,17 @@
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="5h9-6P-Z6x" secondAttribute="bottom" id="NQm-ta-dE5"/>
                                     <constraint firstAttribute="height" secondItem="5h9-6P-Z6x" secondAttribute="height" id="P6o-4L-61k"/>
                                     <constraint firstAttribute="trailing" secondItem="5h9-6P-Z6x" secondAttribute="trailing" constant="40" id="Q9M-Hb-nch"/>
                                     <constraint firstItem="5h9-6P-Z6x" firstAttribute="leading" secondItem="1uX-wd-bvc" secondAttribute="leading" constant="40" id="hf0-NZ-KCL"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Huh-pY-6jW" appends="YES" id="7ju-GA-OPV"/>
+                                </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="y3S-nM-vfi">
-                                <rect key="frame" x="0.0" y="59" width="393" height="679"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0KF-5T-AUH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -133,9 +137,15 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="y3S-nM-vfi" id="Btj-8S-SiU"/>
+                        <outlet property="textView" destination="5h9-6P-Z6x" id="PnO-rz-bjE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ixh-aG-rhb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Huh-pY-6jW">
+                    <connections>
+                        <action selector="tappedGastrue:" destination="6SM-lA-SL7" id="bxU-M7-2XY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1797.709923664122" y="-27.464788732394368"/>
         </scene>

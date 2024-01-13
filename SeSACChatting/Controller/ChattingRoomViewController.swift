@@ -12,6 +12,7 @@ class ChattingRoomViewController: UIViewController {
     static let chattingRoomIdentifier = "ChattingRoomViewController"
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var textView: UITextView!
     
     var chatCount: Int?
     var roomNumber: Int?
@@ -21,15 +22,20 @@ class ChattingRoomViewController: UIViewController {
         super.viewDidLoad()
 
         designUI()
+        print(self.tableView.heightAnchor)
     }
     
-
+    @IBAction func tappedGastrue(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
 }
 
 extension ChattingRoomViewController: ConfiguerUI {
     func designUI() {
         settingTableView()
         designNav()
+        designTextView()
     }
     
     func settingTableView() {
@@ -47,18 +53,43 @@ extension ChattingRoomViewController: ConfiguerUI {
     }
     
     func designNav() {
-        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+//        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         
         self.navigationItem.title = navTitle ?? "없음"
-        self.navigationItem.backBarButtonItem = backBarButtonItem
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.topItem?.titleView?.tintColor = .black
     }
     
+    func designTextView() {
+        self.textView.delegate = self
+        
+        self.textView.textColor = .gray
+        self.textView.text = "내용을 입력해주세요"
+        self.textView.font = .systemFont(ofSize: 24)
+        self.textView.backgroundColor = .systemGray5
+    }
+    
+}
+
+extension ChattingRoomViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+        textView.textColor = .black
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print(#function)
+        if textView.text.isEmpty {
+            textView.text = "메세지를 입력하세요"
+            textView.textColor = .lightGray
+        }
+    }
     
 }
 
 extension ChattingRoomViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(chatCount)
         return chatCount!
     }
     

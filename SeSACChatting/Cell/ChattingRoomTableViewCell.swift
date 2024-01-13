@@ -26,6 +26,8 @@ class ChattingRoomTableViewCell: UITableViewCell {
         self.backView.layer.borderColor = UIColor.lightGray.cgColor
         self.backView.layer.borderWidth = 1
         self.chatLabel.numberOfLines = 0
+        self.dateLabel.font = .systemFont(ofSize: 12)
+        self.dateLabel.textColor = .lightGray
     }
     
     func configureCell(data: Chat) {
@@ -40,7 +42,8 @@ class ChattingRoomTableViewCell: UITableViewCell {
         
         let tempDate = format.date(from: date)!
         
-        self.format.dateFormat = "HH:mm"
+        self.format.dateFormat = "HH:mm a"
+        self.format.locale = Locale(identifier: "ko_KR")
         
         return format.string(from: tempDate)
     }

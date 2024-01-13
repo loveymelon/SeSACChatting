@@ -25,6 +25,8 @@ class UserTableViewCell: UITableViewCell {
         self.backView.layer.borderWidth = 1
         self.backView.backgroundColor = .systemGray5
         self.chatLabel.numberOfLines = 0
+        self.dateLabel.font = .systemFont(ofSize: 12)
+        self.dateLabel.textColor = .lightGray
     }
     
     func configureCell(data: Chat) {
@@ -37,7 +39,8 @@ class UserTableViewCell: UITableViewCell {
         
         let tempDate = format.date(from: date)!
         
-        self.format.dateFormat = "HH:mm"
+        self.format.dateFormat = "a HH:mm"
+        self.format.locale = Locale(identifier: "ko_KR")
         
         return format.string(from: tempDate)
     }
